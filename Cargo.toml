@@ -1,0 +1,15 @@
+[package]
+name = "ghost_os"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+
+# on panic, abort instead of the default eh_personality language item (unwinding) | used for both dev and release
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"
