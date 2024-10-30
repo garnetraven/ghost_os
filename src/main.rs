@@ -1,16 +1,18 @@
-#![no_std]
-#![no_main]
+#![no_std] // don't link the standard Rust library
+#![no_main] // disable all Rust-level entry points
 
 use core::panic::PanicInfo;
 
-// This is called on panic (fatal unrecoverable error).
+#[no_mangle] // don't mangle (unique encoded string) the name of this function
+pub extern "C" fn _start() -> ! {
+    // this function is the entry point, since the linker looks for a function
+    // named '_start' by default
+    loop {}
+}
+
+// This is called on panic (fatal unrecoverable errors).
 #[panic_handler]
 fn panic(_info: &PanicInfo) -> ! {
     loop {}
 }
 
-// entry point function for runtime
-#[no_mangle]
-pub extern "C" fn _start() -> ! {
-    loop {}
-}

@@ -7,9 +7,10 @@ edition = "2021"
 
 [dependencies]
 
-# on panic, abort instead of the default eh_personality language item (unwinding) | used for both dev and release
+# `cargo build` profile
 [profile.dev]
-panic = "abort"
+panic = "abort" # disable stack unwinding on panic
 
+# `cargo build --release` profile
 [profile.release]
-panic = "abort"
+panic = "abort" # disable stack unwinding on panic
